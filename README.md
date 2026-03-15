@@ -1,6 +1,6 @@
 # VidSearch
 
-A command-line tool for transcribing video/audio files and searching through their transcripts. Primarily uses Faster-Whisper for high-quality transcription, with Vosk as a fallback option. Optimized for Chinese language processing.
+A command-line tool for transcribing video/audio files and searching through their transcripts. Primarily uses Faster-Whisper for high-quality transcription, with Vosk as a fallback option. You can use this tool to build a searchable movie/video database where you can find any spoken phrase and jump directly to it.
 
 ## Features
 
@@ -8,8 +8,7 @@ A command-line tool for transcribing video/audio files and searching through the
 - **Automatic Transcription**: Extract audio and transcribe to text using Faster-Whisper (GPU/CPU) or Vosk
 - **Full-Text Search**: Search through video filenames or transcript content with paginated results
 - **Segment Playback**: Open specific transcript segments directly in a video player at the exact timestamp
-- **Chinese Support**: Pre-trained models for accurate Chinese speech recognition
-- **Directory Processing**: Recursively process folders containing multiple video files
+- **Full Language Support**: Faster-Whisper (large-v2) supports almost all languages.
 
 ## Project Structure
 
@@ -108,7 +107,7 @@ vidsearch remove --video-id 1
 ## Transcription Backends
 
 - **Primary**: Faster-Whisper (`large-v2` model) - High accuracy, supports GPU acceleration
-- **Fallback**: Vosk - CPU-only, faster for offline use, included models for Chinese
+- **Fallback**: Vosk - CPU-only, faster for offline use
 
 The system defaults to Whisper. To use Vosk, download the model (e.g., `vosk-model-small-en-us-0.15`) and place it under `models/vosk/`. Then run:
 ```bash
