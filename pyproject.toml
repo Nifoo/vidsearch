@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vidsearch"
+version = "0.1.0"
+description = "A command-line tool for transcribing video/audio files and searching through their transcripts"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "faster-whisper",
+    "pypinyin",
+    "rapidfuzz",
+    "ffmpeg-python",
+    "moviepy",
+    "vosk",
+]
+
+[project.urls]
+Homepage = "https://github.com/Nifoo/vidsearch"
+Repository = "https://github.com/Nifoo/vidsearch.git"
+Issues = "https://github.com/Nifoo/vidsearch/issues"
+
+[project.scripts]
+vidsearch = "vidsearch.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+exclude = ["models*"]

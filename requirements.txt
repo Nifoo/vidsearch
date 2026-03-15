@@ -1,0 +1,7 @@
+# requirements for vidsearch
+faster-whisper
+pypinyin
+rapidfuzz
+ffmpeg-python
+moviepy
+vosk
