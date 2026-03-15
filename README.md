@@ -9,7 +9,7 @@ A command-line tool for transcribing video/audio files and searching through the
 - **Full-Text Search**: Search through video filenames or transcript content with paginated results
 - **Segment Playback**: Open specific transcript segments directly in a video player at the exact timestamp
 - **Chinese Support**: Pre-trained models for accurate Chinese speech recognition
-- **Batch Processing**: Recursively process folders containing multiple video files
+- **Directory Processing**: Recursively process folders containing multiple video files
 
 ## Project Structure
 
@@ -45,6 +45,18 @@ vidsearch/
    ```
 
 ## Usage
+
+### Interactive Mode
+```bash
+vidsearch interactive
+```
+In this mode, you can run all the commands below in a consistent session without `vidsearch` prefix. Type `exit` to exit this mode. e.g.
+```bash
+vidsearch interactive
+add "video.mp4" --use-vosk
+search_segment "quantum computing"
+exit
+```
 
 ### Add Videos
 Add a single video:
@@ -93,18 +105,6 @@ Remove a video and its transcripts:
 vidsearch remove --video-id 1
 ```
 
-### Interactive Mode
-```bash
-vidsearch interactive
-```
-In this mode, you can run all the commands above in a consistent session without `vidsearch` prefix. Type `exit` to exit this mode. e.g.
-```bash
-vidsearch interactive
-add "video.mp4" --use-vosk
-search_segment "quantum computing"
-exit
-```
-
 ## Transcription Backends
 
 - **Primary**: Faster-Whisper (`large-v2` model) - High accuracy, supports GPU acceleration
@@ -115,11 +115,14 @@ The system defaults to Whisper. To use Vosk, download the model (e.g., `vosk-mod
 vidsearch add "path/to/video.mp4" --use-vosk
 ```
 
+## Datebase
+- SQLite as database stored in `~/.vidsearch/vidsearch.db`
+
 ## Requirements
 
 - Python 3.8+
 - SQLite (built-in)
-- FFmpeg (for audio extraction)
+- FFmpeg (for Faster-Whisper case audio extraction; MoviePy does invoke FFmpeg under the hood)
 - Video player: mpv
 
 ## Dependencies
@@ -128,12 +131,11 @@ Key packages from `requirements.txt`:
 - `faster-whisper`: GPU-accelerated Whisper transcription
 - `moviepy`: Video/audio processing
 - `vosk`: Offline speech recognition
-- `pypinyin`: Chinese text processing
-- `rapidfuzz`: Fuzzy string matching for search
+- `pypinyin`: Chinese text processing (TODO)
+- `rapidfuzz`: Fuzzy string matching for search (TODO)
 
 ## Notes
 
 - First transcription may take time as Whisper model downloads (~3GB)
 - GPU recommended for faster transcription
-- Database stored in `~/.vidsearch/vidsearch.db`
 - Supports common video formats: MP4, MKV, AVI, MOV, etc.
