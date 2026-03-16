@@ -8,6 +8,9 @@ VOSK_MODEL_PATH = os.path.join("models", "vosk-model-small-cn-0.22")
 whisper_model = None
 vosk_model = None
 
+WHISPER_MODEL = "whisper"
+VOSK_MODEL = "vosk"
+
 def get_whisper_model():
     global whisper_model
     if whisper_model is None:
@@ -115,7 +118,7 @@ def transcribe_vosk(audio_file: str) -> List[Dict]:
     return segments
 
 
-def transcribe_video(video_file: str, backend: str = "whisper") -> List[Dict]:
+def transcribe_video(video_file: str, backend: str = WHISPER_MODEL) -> List[Dict]:
     """
     Main entry point. Chooses backend: 'whisper' (default) or 'vosk'.
     Return list of segments as:
@@ -127,9 +130,9 @@ def transcribe_video(video_file: str, backend: str = "whisper") -> List[Dict]:
     from moviepy.video.io.VideoFileClip import VideoFileClip
     import tempfile
 
-    if backend == "whisper":
+    if backend == WHISPER_MODEL:
         return transcribe_whisper(video_file)
-    elif backend == "vosk":
+    elif backend == VOSK_MODEL:
         # extract audio first
         with VideoFileClip(video_file) as clip:
             tmp_audio = tempfile.NamedTemporaryFile(suffix=".wav", delete=False)

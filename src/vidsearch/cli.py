@@ -17,7 +17,7 @@ def add(args):
     3. Index transcript for search.
     """
     path = args.file_or_folder
-    model_name = args.use_vosk and "Vosk" or "Whisper"
+    model_name = args.use_vosk and transcribe.VOSK_MODEL or transcribe.WHISPER_MODEL
     print("Adding video(s) to DB:", args.file_or_folder)
 
     # --- Determine if path is file or folder ---

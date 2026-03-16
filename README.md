@@ -115,7 +115,7 @@ vidsearch add "path/to/video.mp4" --use-vosk
 ```
 
 ## Datebase
-- SQLite as database stored in `~/.vidsearch/vidsearch.db`
+- SQLite as database by default stored in `.vidsearch/vidsearch.db`
 
 ## Requirements
 
